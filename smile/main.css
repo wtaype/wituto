@@ -1849,17 +1849,6 @@ input::placeholder {
   }
 }
 
-/* =============================================
-   ADMIN PANEL & FORMS
-   ============================================= */
-.form_row { display: grid; grid-template-columns: 1fr 1fr; gap: 2vh; }
-.form_gr { display: flex; flex-direction: column; gap: 1vh; margin-bottom: 2vh; }
-.form_lab { display: flex; align-items: center; gap: 1vh; font-size: var(--fz_c1); font-weight: 700; color: var(--bg2); }
-.form_lab i { color: var(--mco); }
-input[type="text"], input[type="url"], .inp_sel, textarea { width: 100%; padding: 1.2vh 1.5vw; border: 2px solid var(--bdr); border-radius: 1.2vh; background: rgba(255,255,255,0.9); font-size: var(--fz_c2); color: var(--tx); outline: none; transition: all var(--tr_f); font-family: var(--ff_P); }
-input:focus, .inp_sel:focus, textarea:focus { border-color: var(--mco); box-shadow: 0 0 0 3px var(--bxs); background: var(--F); }
-textarea { min-height: 15vh; font-family: 'Courier New', monospace; resize: vertical; }
-.btn_pri { width: 100%; padding: 1.5vh 2vw; background: linear-gradient(135deg, var(--mco), var(--hv)); color: var(--F); border: 0; border-radius: 1.5vh; font-size: var(--fz_c1); font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 1vh; transition: all var(--tr_m); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-.btn_pri:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
-
-@media (max-width: 768px) { .form_row { grid-template-columns: 1fr; } }
+a{
+  text-decoration: none;
+}

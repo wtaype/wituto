@@ -9,7 +9,7 @@ function header(wi = null){
 <header class="top-header">
   <div class="header-container miwp">
     <div class="header-left">
-      <h1><i class="fas fa-${esPublico ? 'heart' : 'trophy'}"></i> ${esPublico ? 'WiiLove' : 'MI DASHBOARD'}</h1>
+      <a href="/"><h1><i class="fas fa-${esPublico ? 'trophy' : 'heart'}"></i> ${esPublico ? 'WiTuto' : 'MI DASHBOARD'}</h1></a>
     </div>
     <div class="header-right">
       <div class="witemas"></div>

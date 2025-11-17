@@ -1,5 +1,14 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/wituto/', // Esta es la dirección para la versión más nueva
+  base: '/',
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      }
+    }
+  }
 })

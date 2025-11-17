@@ -1,5 +1,5 @@
 import $ from 'jquery';
-
+import './posts.css';
 import { header } from './header.js';
 import { footer } from './footer.js';
 import { abrirModalPost, cargarPostsAdmin } from './posts.js';
@@ -8,29 +8,35 @@ export function personalContenido(wi) {
   $('.app').html(`
     ${header(wi)} 
     <main class="miweb miwp">
-      <section class="admin-panel">
-        <div class="admin-header">
-          <h2><i class="fas fa-newspaper"></i> Gestión de Posts</h2>
-          <button class="btn_pri" id="btn_nuevo_post">
-            <i class="fas fa-plus"></i> Agregar Post
+      <section class="adm-pnl">
+        <div class="adm-h">
+          <div class="adm-h-left">
+            <h2><i class="fas fa-newspaper"></i> Gestión de Posts</h2>
+            <p class="adm-sub">Administra tus publicaciones del blog</p>
+          </div>
+          <button class="btn_pri" id="bnuevo">
+            <i class="fas fa-plus-circle"></i> Nuevo Post
           </button>
         </div>
 
         <div class="tabla-wrapper">
-          <table class="tabla-posts tabla-registros">
+          <table class="tbl-pst">
             <thead>
               <tr>
-                <th>Título</th>
-                <th>Categoría</th>
-                <th>Autor</th>
-                <th>Fecha</th>
-                <th>Estado</th>
-                <th>Vistas</th>
-                <th>Acciones</th>
+                <th><i class="fas fa-calendar"></i> Fecha</th>
+                <th><i class="fas fa-heading"></i> Título</th>
+                <th><i class="fas fa-tag"></i> Categoría</th>
+                <th><i class="fas fa-eye"></i> Vistas</th>
+                <th><i class="fas fa-toggle-on"></i> Estado</th>
+                <th><i class="fas fa-cog"></i> Acciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td colspan="7" style="text-align:center;padding:3vh;">Cargando...</td></tr>
+              <tr>
+                <td colspan="6" class="td-loading">
+                  <i class="fas fa-spinner fa-spin"></i> Cargando posts...
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -39,10 +45,6 @@ export function personalContenido(wi) {
     ${footer()}
   `);
 
-  // Cargar posts
   cargarPostsAdmin();
-
-  // Evento agregar post
-  $('#btn_nuevo_post').off('click').on('click', () => abrirModalPost());
-
+  $('#bnuevo').off('click').on('click', () => abrirModalPost());
 }
