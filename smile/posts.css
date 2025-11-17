@@ -1,0 +1,448 @@
+/* =============================================
+   POST INDIVIDUAL (Vista pública)
+   ============================================= */
+.pst {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3vh 2vw;
+}
+
+.pst-h {
+  margin-bottom: 3vh;
+}
+
+.pst-cat {
+  background: var(--mco);
+  color: var(--txa);
+  padding: 0.5vh 1.5vh;
+  border-radius: 2vh;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1vh;
+}
+
+.pst h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--mco);
+  margin: 1vh 0;
+  line-height: 1.3;
+}
+
+.pst-meta {
+  display: flex;
+  gap: 2vh;
+  color: var(--tx);
+  font-size: 0.9rem;
+  margin: 1.5vh 0;
+  flex-wrap: wrap;
+}
+
+.pst-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5vh;
+}
+
+.pst-meta i {
+  color: var(--mco);
+  opacity: 0.8;
+}
+
+.pst-img {
+  width: 100%;
+  max-height: 40vh;
+  object-fit: cover;
+  border-radius: 1vh;
+  margin: 2vh 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pst-cnt {
+  line-height: 1.8;
+  color: var(--tx);
+  font-size: 1.05rem;
+}
+
+.pst-cnt p {
+  margin: 1.5vh 0;
+}
+
+.pst-cnt h2 {
+  color: var(--mco);
+  margin: 3vh 0 1.5vh;
+  font-size: 1.6rem;
+  border-left: 4px solid var(--mco);
+  padding-left: 1.5vh;
+}
+
+.pst-cnt h3 {
+  color: var(--bg4);
+  margin: 2vh 0 1vh;
+  font-size: 1.3rem;
+}
+
+.pst-cnt code {
+  background: var(--bg1);
+  padding: 0.3vh 0.8vh;
+  border-radius: 0.5vh;
+  font-family: 'Courier New', monospace;
+  color: var(--mco);
+  font-size: 0.95em;
+}
+
+.pst-cnt pre {
+  background: var(--bg);
+  padding: 2vh;
+  border-radius: 1vh;
+  overflow-x: auto;
+  border-left: 3px solid var(--mco);
+}
+
+.pst-cnt ul, .pst-cnt ol {
+  margin: 1.5vh 0;
+  padding-left: 3vh;
+}
+
+.pst-cnt li {
+  margin: 0.8vh 0;
+}
+
+.pst-f {
+  margin-top: 3vh;
+  padding-top: 2vh;
+  border-top: 2px solid var(--bdr);
+  display: flex;
+  gap: 1vh;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: var(--bg1);
+  color: var(--mco);
+  padding: 0.5vh 1.5vh;
+  border-radius: 2vh;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: var(--mco);
+  color: var(--txa);
+  transform: translateY(-2px);
+}
+
+/* Error 404 */
+.pst-err {
+  text-align: center;
+  padding: 8vh 2vw;
+}
+
+.pst-err i {
+  font-size: 6rem;
+  color: var(--error);
+  margin-bottom: 2vh;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.pst-err h2 {
+  color: var(--mco);
+  font-size: 2rem;
+  margin-bottom: 1vh;
+}
+
+.pst-err p {
+  color: var(--txs);
+  font-size: 1.1rem;
+  margin-bottom: 2vh;
+}
+
+.pst-err a {
+  display: inline-block;
+  background: var(--mco);
+  color: var(--txa);
+  padding: 1.2vh 3vh;
+  border-radius: 1vh;
+  text-decoration: none;
+  margin-top: 2vh;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pst-err a:hover {
+  background: var(--hv);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* =============================================
+   PANEL DE ADMINISTRACIÓN
+   ============================================= */
+.adm-pnl {
+  padding: 3vh 0;
+}
+
+.adm-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3vh;
+  flex-wrap: wrap;
+  gap: 2vh;
+  background: linear-gradient(135deg, var(--bg1), var(--bg));
+  padding: 2vh 3vh;
+  border-radius: 1.5vh;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.adm-h h2 {
+  color: var(--mco);
+  font-size: var(--fz_c9);
+  display: flex;
+  align-items: center;
+  gap: 1vh;
+  margin: 0;
+}
+
+.adm-h h2 i {
+  font-size: 1.2em;
+}
+
+/* Tabla de Posts */
+.tbl-pst {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--F);
+  border-radius: 1vh;
+  overflow: hidden;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.tbl-pst thead {
+  background: linear-gradient(135deg, var(--mco), var(--hv));
+  color: var(--txa);
+}
+
+.tbl-pst thead th {
+  padding: 1.5vh 2vh;
+  text-align: left;
+  font-weight: 700;
+  font-size: var(--fz_c2);
+  letter-spacing: 0.5px;
+}
+
+.tbl-pst tbody tr {
+  border-bottom: 1px solid var(--bdr);
+  transition: all 0.3s ease;
+}
+
+.tbl-pst tbody tr:hover {
+  background: var(--bg1);
+  transform: scale(1.01);
+}
+
+.tbl-pst tbody td {
+  padding: 1.5vh 2vh;
+  color: var(--tx);
+  font-size: var(--fz_c2);
+}
+
+.tbl-pst tbody td strong {
+  color: var(--mco);
+  font-weight: 600;
+}
+
+/* Badges */
+.bdg {
+  padding: 0.6vh 1.2vh;
+  border-radius: 1vh;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.bdg-ok {
+  background: var(--success);
+  color: #fff;
+}
+
+.bdg-no {
+  background: var(--error);
+  color: #fff;
+}
+
+/* Botones de Tabla */
+.btn-ver, .btn-edit, .btn-del {
+  background: none;
+  border: none;
+  padding: 0.8vh 1.2vh;
+  border-radius: 0.8vh;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  margin: 0 0.3vh;
+}
+
+.btn-ver {
+  color: var(--mco);
+  background: var(--bg1);
+}
+
+.btn-ver:hover {
+  background: var(--mco);
+  color: var(--txa);
+  transform: scale(1.1);
+}
+
+.btn-edit {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.btn-edit:hover {
+  background: #3b82f6;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.btn-del {
+  color: var(--error);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.btn-del:hover {
+  background: var(--error);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* =============================================
+   FORMULARIO DE POST (Modal)
+   ============================================= */
+.form_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2vh;
+}
+
+.form_gr {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  margin-bottom: 2vh;
+}
+
+.form_lab {
+  display: flex;
+  align-items: center;
+  gap: 1vh;
+  font-size: var(--fz_c1);
+  font-weight: 700;
+  color: var(--bg2);
+}
+
+.form_lab i {
+  color: var(--mco);
+  font-size: 1.1em;
+}
+
+#fpost input[type="text"],
+#fpost input[type="url"],
+#fpost .inp_sel,
+#fpost textarea {
+  width: 100%;
+  padding: 1.2vh 1.5vw;
+  border: 2px solid var(--bdr);
+  border-radius: 1.2vh;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: var(--fz_c2);
+  color: var(--tx);
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: var(--ff_P);
+}
+
+#fpost textarea {
+  min-height: 20vh;
+  font-family: 'Courier New', monospace;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+#fpost input:focus,
+#fpost .inp_sel:focus,
+#fpost textarea:focus {
+  border-color: var(--mco);
+  box-shadow: 0 0 0 3px var(--bxs);
+  background: var(--F);
+}
+
+.btn_pri {
+  width: 100%;
+  padding: 1.5vh 2vw;
+  background: linear-gradient(135deg, var(--mco), var(--hv));
+  color: var(--F);
+  border: 0;
+  border-radius: 1.5vh;
+  font-size: var(--fz_c1);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vh;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 2vh;
+}
+
+.btn_pri:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn_pri:active {
+  transform: translateY(0);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .form_row {
+    grid-template-columns: 1fr;
+  }
+
+  .adm-h {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tbl-pst {
+    font-size: 0.85rem;
+  }
+
+  .tbl-pst thead th,
+  .tbl-pst tbody td {
+    padding: 1vh 1.2vh;
+  }
+
+  .pst h1 {
+    font-size: 1.5rem;
+  }
+
+  .pst-meta {
+    flex-direction: column;
+    gap: 1vh;
+  }
+}
+#modalPost .modal-content{
+    padding: 4vh;
+}
