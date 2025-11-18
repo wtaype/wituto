@@ -17,23 +17,25 @@ service cloud.firestore {
       allow write: if true; 
     } // Consulta para validar, crear, eliminar publico.Actualizar solo Autenticados
     
-    // Colección posts
     match /posts/{postId} {
-      // Lectura: Todos pueden leer posts activos
-      allow read: if resource.data.activo == true || request.auth != null;
-      
-      // Escritura: Solo usuarios autenticados (admins)
-      allow create: if request.auth != null 
-                    && request.resource.data.keys().hasAll(['id', 'titulo', 'autor', 'categoria', 'contenido', 'activo', 'fecha', 'vistas', 'tags']);
-      
-      allow update: if request.auth != null;
-      
+      // Lectura: todos pueden leer posts
+      allow read: if true;
+
+      // Crear: sólo autenticados con campos requeridos
+      allow create: if request.auth != null
+                    && request.resource.data.keys().hasAll([
+                      'id', 'titulo', 'autor', 'categoria',
+                      'contenido', 'activo', 'fecha', 'vistas', 'tags'
+                    ]);
+
+      // Actualizar:
+      // - cualquiera puede modificar solo 'vistas'
+      // - autenticados pueden actualizar cualquier campo
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['vistas'])
+                    || request.auth != null;
+
+      // Borrar: sólo autenticados
       allow delete: if request.auth != null;
-    }
-    
-    // Incrementar vistas (permitir a todos)
-    match /posts/{postId} {
-      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['vistas']);
     }
     
   }

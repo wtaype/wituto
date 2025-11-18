@@ -1859,3 +1859,119 @@ textarea { min-height: 15vh; font-family: 'Courier New', monospace; resize: vert
     font-size: 1.1rem;
   }
 }
+
+/* =============================================
+   VISTA PÚBLICA HOME
+   ============================================= */
+.pub-hero {
+  text-align: center;
+  padding: 5vh 2vw;
+  background: linear-gradient(135deg, var(--bg1), rgba(255,255,255,0.05));
+  border-radius: 1.5vh;
+  margin-bottom: 4vh;
+}
+
+.pub-hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--mco);
+  margin: 0 0 1vh 0;
+  font-family: var(--ff_R);
+  font-weight: 700;
+}
+
+.pub-hero p {
+  font-size: var(--fz_c5);
+  color: var(--txs);
+  margin: 0;
+}
+
+.pub-posts {
+  padding: 2vh 0;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3vh;
+}
+
+.loading-posts {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 5vh;
+  color: var(--mco);
+  font-size: var(--fz_c5);
+}
+
+.post-card {
+  background: var(--F);
+  border-radius: 1.5vh;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.post-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--mco);
+}
+
+.post-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.post-no-img {
+  width: 100%;
+  height: 200px;
+  background: var(--bg1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--txs);
+  font-size: 3rem;
+}
+
+.post-info {
+  padding: 2vh 2.5vh;
+}
+
+.post-info h3 {
+  font-size: var(--fz_c6);
+  color: var(--mco);
+  margin: 0 0 1vh 0;
+  font-family: var(--ff_R);
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-fecha {
+  font-size: var(--fz_c3);
+  color: var(--txs);
+  display: flex;
+  align-items: center;
+  gap: 0.5vh;
+}
+
+.no-posts {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 5vh;
+  color: var(--txs);
+  font-size: var(--fz_c5);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+}

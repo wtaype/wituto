@@ -12,7 +12,7 @@ git add . ; git commit -m "Actualizacion Principal v10.11.39"
 git push origin main
 
 // Actualizar despues de main- 
-git tag v0 -m "Version v0" ; git push origin v0
+git tag v11 -m "Version v11" ; git push origin v11
 
  ACTUALIZACION TAG[END] */ 
 
