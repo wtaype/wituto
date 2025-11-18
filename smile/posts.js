@@ -30,10 +30,20 @@ export const obtenerPost = async (id) => {
 export const listarPosts = async (activos = true) => {
   try {
     const cache = getls('posts_lista');
-    if (cache) return cache;
-    const q = activos ? query(collection(db, 'posts'), where('activo', '==', true), orderBy('fecha', 'desc')) : query(collection(db, 'posts'), orderBy('fecha', 'desc'));
+    if (cache) {
+      return activos ? cache.filter(p => p.activo) : cache;
+    }
+
+    // Sólo ordenamos por fecha; sin where para evitar índice compuesto
+    const q = query(
+      collection(db, 'posts'),
+      orderBy('fecha', 'desc')
+    );
     const busq = await getDocs(q);
-    const posts = busq.docs.map(d => ({ id: d.id, ...d.data() }));
+
+    let posts = busq.docs.map(d => ({ id: d.id, ...d.data() }));
+    if (activos) posts = posts.filter(p => p.activo);
+
     savels('posts_lista', posts, 0.5);
     return posts;
   } catch (e) { console.error(e); return []; }
