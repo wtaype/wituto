@@ -8,6 +8,17 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html'
+      },
+      output: {
+        manualChunks: {
+          firebase: [
+            'firebase/app',
+            'firebase/firestore',
+            'firebase/auth'
+          ],
+          jquery: ['jquery'],
+          icons: ['@fortawesome/fontawesome-free/css/all.min.css']
+        }
       }
     }
   }

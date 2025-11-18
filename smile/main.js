@@ -4,25 +4,44 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { auth, db } from '../firebase/init.js';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { savels, getls } from './widev.js';
-import { publicoContenido } from './publico.js';
-import { personalContenido } from './personal.js';
-import { obtenerPost, mostrarPost } from './posts.js';
+import { savels, getls } from './widev.js'; 
 
 const ruta = async (wi) => {
   const path = window.location.pathname.slice(1);
-  if (!path) return wi ? personalContenido(wi) : publicoContenido();
+
+  // Home pública o personal
+  if (!path) {
+    if (wi) {
+      const { personalContenido } = await import('./personal.js');
+      return personalContenido(wi);
+    } else {
+      const { publicoContenido } = await import('./publico.js');
+      return publicoContenido();
+    }
+  }
+
+  // Detalle de post
+  const { obtenerPost, mostrarPost } = await import('./posts.js');
   const post = await obtenerPost(path);
-  post ? mostrarPost(path, wi) : $('.app').html(`<div class="pst-err"><i class="fas fa-exclamation-circle"></i><h2>404</h2><p>Página no encontrada</p><a href="/">Volver</a></div>`);
+  post
+    ? mostrarPost(path, wi)
+    : $('.app').html(`<div class="pst-err"><i class="fas fa-exclamation-circle"></i><h2>404</h2><p>Página no encontrada</p><a href="/">Volver</a></div>`);
 };
 
 onAuthStateChanged(auth, async user => {
   let wi = null;
   if (user) {
-    try {
-      wi = getls('wiSmile') || (await getDocs(query(collection(db, 'smiles'), where('usuario', '==', user.displayName)))).docs[0]?.data() || {};
-      savels('wiSmile', wi, 450);
-    } catch (e) { console.error(e); }
+    // Cache agresivo de wiSmile
+    wi = getls('wiSmile');
+    if (!wi) {
+      try {
+        const snap = await getDocs(
+          query(collection(db, 'smiles'), where('usuario', '==', user.displayName))
+        );
+        wi = snap.docs[0]?.data() || {};
+        savels('wiSmile', wi, 1440); // cache 24h
+      } catch (e) { console.error(e); }
+    }
   }
   await ruta(wi);
 });

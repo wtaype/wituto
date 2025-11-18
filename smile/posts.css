@@ -1975,3 +1975,16 @@ textarea { min-height: 15vh; font-family: 'Courier New', monospace; resize: vert
     grid-template-columns: 1fr;
   }
 }
+
+.post-skeleton{
+  height: 120px;
+  border-radius: 12px;
+  background: linear-gradient(90deg,#eee 25%,#f5f5f5 37%,#eee 63%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+}
+
+@keyframes skeleton-loading{
+  0%{background-position:100% 50%;}
+  100%{background-position:0 50%;}
+}
