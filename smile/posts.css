@@ -1318,6 +1318,9 @@ textarea { min-height: 15vh; font-family: 'Courier New', monospace; resize: vert
   display: flex;
   flex-direction: column;
   gap: 0.5vh;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .sidebar-post-info h4 {
@@ -1987,4 +1990,74 @@ textarea { min-height: 15vh; font-family: 'Courier New', monospace; resize: vert
 @keyframes skeleton-loading{
   0%{background-position:100% 50%;}
   100%{background-position:0 50%;}
+}
+
+/* ==== 🎨 BOTONES INSERCIÓN CÓDIGO ==== */
+.code-buttons { display: flex; gap: 1vh; margin-bottom: 1.5vh; }
+.btn-code {
+  flex: 1; padding: 1.2vh 1.5vh; color: #fff; border: none; border-radius: 1vh;
+  font: 600 var(--fz_c3) var(--ff_R); cursor: pointer; display: flex;
+  align-items: center; justify-content: center; gap: 0.8vh; transition: all .3s;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  box-shadow: 0 3px 10px rgba(102,126,234,.3);
+}
+.btn-code i { font-size: 1.3em; }
+.btn-code[data-lang="javascript"] { background: linear-gradient(135deg, #f7df1e, #f0db4f); color: #000; box-shadow: 0 3px 10px rgba(247,223,30,.3); }
+.btn-code[data-lang="html"] { background: linear-gradient(135deg, #e34c26, #f06529); box-shadow: 0 3px 10px rgba(227,76,38,.3); }
+.btn-code[data-lang="css"] { background: linear-gradient(135deg, #264de4, #2965f1); box-shadow: 0 3px 10px rgba(38,77,228,.3); }
+.btn-code:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+.btn-code:active { transform: translateY(-1px); }
+.btn-code-active { animation: btnPulse .3s; }
+@keyframes btnPulse { 50% { transform: scale(.95); } }
+
+/* ==== 📋 ID STATUS ==== */
+.id-status { 
+  display: flex; align-items: center; justify-content: space-between; gap: 1vh;
+  padding: 1vh 1.5vh; border-radius: .8vh; margin-top: 1vh; font-size: var(--fz_c3);
+  transition: all .3s;
+}
+.id-status.vacio { background: rgba(var(--mco-rgb),.05); color: var(--txb); border: 1px solid rgba(var(--mco-rgb),.1); }
+.id-status.disponible { background: rgba(46,125,50,.1); color: #2E7D32; border: 1px solid rgba(46,125,50,.3); }
+.id-status.ocupado { background: rgba(211,47,47,.1); color: #D32F2F; border: 1px solid rgba(211,47,47,.3); }
+.id-status code { background: rgba(var(--mco-rgb),.1); padding: .3vh .8vh; border-radius: .5vh; font: .9em 'Monaco',monospace; margin: 0 .5vh; }
+.id-actions { display: flex; gap: .5vh; }
+.btn-id-action {
+  background: rgba(var(--mco-rgb),.1); border: 1px solid rgba(var(--mco-rgb),.2);
+  color: var(--mco); padding: .6vh 1vh; border-radius: .6vh; cursor: pointer;
+  transition: all .2s; display: flex; align-items: center; justify-content: center;
+}
+.btn-id-action:hover { background: var(--mco); color: #fff; transform: scale(1.05); }
+
+/* ==== 📜 CÓDIGO HIGHLIGHT ==== */
+.pst-contenido pre {
+  background: #282c34; border-radius: 1.2vh; padding: 2.5vh; overflow-x: auto;
+  margin: 2.5vh 0; box-shadow: 0 4px 15px rgba(0,0,0,.15); border-left: 4px solid var(--mco);
+  position: relative;
+}
+.pst-contenido pre code {
+  font: .95rem/1.7 'Fira Code','Monaco','Courier New',monospace; color: #abb2bf;
+  display: block; padding: 0; background: transparent;
+}
+.pst-contenido code:not(pre code) {
+  background: rgba(var(--mco-rgb),.1); padding: .3vh .8vh; border-radius: .5vh;
+  font: .9em 'Monaco',monospace; color: var(--mco); border: 1px solid rgba(var(--mco-rgb),.2);
+}
+
+/* ==== 📋 COPIAR CÓDIGO ==== */
+.btn-copy-code {
+  position: absolute; top: 1vh; right: 1vh; background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2); color: #fff; padding: .8vh 1.2vh;
+  border-radius: .6vh; cursor: pointer; transition: all .2s; font-size: .9rem;
+  display: flex; align-items: center; gap: .5vh; backdrop-filter: blur(10px);
+}
+.btn-copy-code:hover { background: var(--mco); border-color: var(--mco); transform: scale(1.05); }
+
+/* ==== 📱 RESPONSIVE ==== */
+@media (max-width: 768px) {
+  .code-buttons { flex-direction: column; }
+  .btn-code { padding: 1.5vh 2vh; }
+  .pst-contenido pre { padding: 2vh; }
+  .pst-contenido pre, .pst-contenido pre code { font-size: .85rem; }
+  .id-status { flex-direction: column; align-items: flex-start; }
+  .id-actions { width: 100%; justify-content: flex-end; }
 }

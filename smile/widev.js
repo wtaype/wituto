@@ -25,7 +25,38 @@ export const getbd = (tm) => {
     || (tm._seconds && new Date(tm._seconds * 1000)) || (tm.seconds && new Date(tm.seconds * 1000)) || new Date(tm);
   return isNaN(dt) ? '' : `${dt.getDate().toString().padStart(2,'0')}/${(dt.getMonth()+1).toString().padStart(2,'0')}/${dt.getFullYear()}`;
 };
- 
+
+// ==== 📋 COPIAR PORTAPAPELES ==== 
+export const wicopy = (txt, elm = null, msg = '¡Copiado!') => {
+  let cnt;
+
+  // resolver texto
+  if (txt instanceof $) {                          // jQuery
+    cnt = txt.text() || txt.val() || '';
+  } else if (txt && (txt.nodeType === 1 || txt.nodeType === 3)) { // DOM
+    cnt = txt.textContent || txt.value || '';
+  } else if (typeof txt === 'string' && /^[.#\[]/.test(txt) && $(txt).length) { // selector
+    const $el = $(txt);
+    cnt = $el.text() || $el.val() || '';
+  } else {
+    cnt = String(txt ?? '');
+  }
+
+  const fin = () => elm ? witip(elm, msg, 'success', 1500) : Notificacion(msg, 'success', 1500);
+
+  const copTa = () => {
+    const $t = $('<textarea>').val(cnt).appendTo('body');
+    $t[0].select();
+    document.execCommand('copy');
+    $t.remove();
+    fin();
+  };
+
+  // api moderna + fallback
+  navigator.clipboard?.writeText
+    ? navigator.clipboard.writeText(cnt).then(fin).catch(copTa)
+    : copTa();
+};
 
 export const wiSpin = (b, on = true, txt = '') => {
   const $b = $(b);
